@@ -2,9 +2,15 @@ import streamlit as st
 import os
 from rag_pipeline import process_document, rag_pipeline
 
-st.set_page_config(page_title="📄 Chat with Your Document")
+st.set_page_config(page_title="Chat with Your Document")
 
-st.title("🧠 RAG Chat App (Upload Your Own!)")
+st.title("DocChatter 🤖")
+st.write("Step 1. Upload a `.txt` document to chat with its content.")
+st.write("Step 2. Ask questions about the document, and the bot will respond based on its content.")
+st.write("That's all you need to do! No need to configure anything else. Just upload your document and start chatting.")
+
+
+st.write("Are you ready to chat? Let's go! 😊")                
 
 
 os.makedirs("app/temp_uploads", exist_ok=True)
