@@ -1,13 +1,11 @@
-
 from langchain import hub
 from langchain_community.document_loaders import TextLoader
 from langchain_core.documents import Document
 from langchain_chroma import Chroma
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langgraph.graph import START, StateGraph
-from typing_extensions import List, TypedDict
 from dotenv import load_dotenv
 from langchain_huggingface import HuggingFaceEmbeddings
+from typing import List, TypedDict
 import getpass
 import os
 from langchain.chat_models import init_chat_model
@@ -25,7 +23,7 @@ embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-b
 vector_store = Chroma(
     collection_name="rag_pipeline_collection",
     embedding_function=embeddings,
-    persist_directory="./chroma_langchain_db",  # Where to save data locally, remove if not necessary
+    persist_directory="./chroma_langchain_db",  
 )
 
 prompt = hub.pull("rlm/rag-prompt")
@@ -61,20 +59,13 @@ def generate(state: State):
     return {"answer": response.content}
 
 def rag_pipeline(question: str) -> str:
-    builder = StateGraph(State)
-    builder.add_node("retrieve", retrieve)
-    builder.add_node("generate", generate)
-
-    builder.set_entry_point("retrieve")
-    builder.add_edge("retrieve", "generate")
-    builder.set_finish_point("generate")
-
-    graph = builder.compile()
-    final_state = graph.invoke({"question": question})
-    return final_state["answer"]
-
     
-        
+    state = {"question": question}
     
-        
     
+    state.update(retrieve(state))
+    
+    
+    result = generate(state)
+    
+    return result["answer"]
