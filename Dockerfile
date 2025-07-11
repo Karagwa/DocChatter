@@ -33,4 +33,4 @@ RUN mkdir -p /app/chroma_langchain_db /app/temp_uploads
 EXPOSE $PORT
 
 # Command to run your Streamlit application.
-CMD ["streamlit", "run", "app/main.py", "--server.port=$PORT", "--server.address=0.0.0.0", "--server.headless=true"]
+CMD streamlit run app/main.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true

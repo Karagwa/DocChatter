@@ -68,6 +68,9 @@ docker run -p 8081:8501 -e PORT=8501 --env-file .env docchatter
 
 Access the app at: http://localhost:8081
 
+### Deployed URL
+https://docchatter-77068367626.europe-west1.run.app
+
 ## 📁 Project Structure
 
 ```
@@ -94,37 +97,6 @@ Build_A_Bot/
 | `PORT` | Application port (default: 8501) | No |
 
 
-### Docker Configuration
-
-The application is configured for easy deployment with:
-- **Dockerfile**: Multi-stage build for production
-- **docker-compose.yaml**: Development environment
-- **Volume mounts**: Persistent data storage
-
-## ☁️ Cloud Deployment
-
-### Google Cloud Run
-
-```bash
-# Deploy directly from source
-gcloud run deploy docchatter \
-  --source . \
-  --platform managed \
-  --region us-central1 \
-  --allow-unauthenticated \
-  --memory 2Gi \
-  --cpu 1 \
-  --port 8501 \
-  --set-env-vars="GOOGLE_API_KEY=your_api_key"
-```
-
-### Alternative Cloud Platforms
-
-The Docker container can be deployed on:
-- AWS ECS/Fargate
-- Azure Container Instances
-- Digital Ocean App Platform
-- Heroku Container Registry
 
 ## 📋 Dependencies
 
@@ -141,11 +113,7 @@ python-dotenv         # Environment management
 
 ### Full Dependencies
 
-See `requirements.txt` for complete list including:
-- LangChain ecosystem packages
-- HuggingFace transformers
-- PyTorch (CPU version)
-- Various utility libraries
+See `requirements.txt` 
 
 ## 🎯 Usage
 
@@ -153,7 +121,7 @@ See `requirements.txt` for complete list including:
 2. **Upload Document**: Use the sidebar to upload a text document
 3. **Ask Questions**: Type questions about your document
 4. **View Responses**: Get AI-powered answers with context
-5. **Chat History**: Review previous conversations
+
 
 ### Supported File Types
 
