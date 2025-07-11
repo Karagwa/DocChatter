@@ -19,7 +19,11 @@ llm = init_chat_model("gemini-2.0-flash", model_provider="google_genai")
 LOCAL_MODEL_PATH = "./models/sentence-transformers/all-mpnet-base-v2"
 
 # Initialize HuggingFaceEmbeddings to load from the local path
-embeddings = HuggingFaceEmbeddings(model_name=LOCAL_MODEL_PATH)
+embeddings = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-mpnet-base-v2", # Keep the model ID for internal logic
+    cache_folder=LOCAL_MODEL_PATH, # Point to your pre-downloaded location
+    model_kwargs={'device': 'cpu'} # Explicitly set device to CPU for Cloud Run
+)
 
 vector_store = Chroma(
     collection_name="rag_pipeline_collection",
