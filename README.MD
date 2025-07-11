@@ -9,7 +9,7 @@ DocChatter is an AI-powered document chat application that allows you to upload 
 - 🔍 **Smart Search**: Vector-based document search using ChromaDB
 - 💬 **Chat History**: Persistent conversation history
 - 🐳 **Dockerized**: Easy deployment with Docker
-- ☁️ **Cloud Ready**: Optimized for Google Cloud Run deployment
+
 
 ## 🏗️ Architecture
 
@@ -66,10 +66,27 @@ docker build -t docchatter .
 docker run -p 8081:8501 -e PORT=8501 --env-file .env docchatter
 ```
 
-Access the app at: http://localhost:8081
+Access the app at: http://127.0.0.1:8081 when using docker incase the http://localhost:8501 has issues
 
 ### Deployed URL
-https://docchatter-77068367626.europe-west1.run.app
+https://docchatter-77068367626.europe-west1.run.app incase this doesn't work as expected stick to accessing the file locally via docker. There are issues with deployment.
+
+### Important note
+The dockerfile has these lines
+
+``` bash
+# Created a directory to store the pre-downloaded model. (This was used during deployment when the deployed container with making many requests to the Hugging Face model repository.)
+# Comment them out if you are running the app locally.
+RUN mkdir -p /app/models/sentence-transformers/all-mpnet-base-v2
+
+# Cloned the sentence-transformers/all-mpnet-base-v2 model repository. (Used mainly in deployment)
+# Comment this out if you are running the app locally.
+RUN git clone https://huggingface.co/sentence-transformers/all-mpnet-base-v2 /app/models/sentence-transformers/all-mpnet-base-v2
+```
+
+Comment them out as they are used mainly in deployment.
+The container build perfectly without them.
+
 
 ## 📁 Project Structure
 
@@ -183,13 +200,6 @@ docker-compose ps
 - **Storage**: Vector database grows with document size
 - **Response Time**: 2-5 seconds depending on query complexity
 
-## 🔒 Security
-
-- API keys stored in environment variables
-- No persistent user data storage
-- Stateless application design
-- Container runs as non-root user (production)
-
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -219,4 +229,4 @@ For issues and questions:
 
 ---
 
-Built with ❤️ using Streamlit, LangChain, and Google AI
+Built with ❤️ by me  using Streamlit, LangChain, and Google AI
