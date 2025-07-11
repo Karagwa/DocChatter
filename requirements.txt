@@ -1,0 +1,14 @@
+streamlit
+langchain
+langgraph
+langchain-community
+langchain-core
+langchain-huggingface
+langchain-google-genai
+langchain-chroma
+chromadb
+sentence-transformers
+python-dotenv
+
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch --index-url https://download.pytorch.org/whl/cpu

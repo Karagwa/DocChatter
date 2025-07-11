@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+
+venv/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.yaml
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment variables (will be mounted as volume)
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Temporary files
+tmp/
+temp/
+
+# Documentation
+README.md
+docs/

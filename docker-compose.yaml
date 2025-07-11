@@ -1,0 +1,13 @@
+services:
+  docchatter:
+    build: .
+    ports:
+      - "8081:8501"
+    volumes:
+      - ./chroma_langchain_db:/app/chroma_langchain_db
+      - ./app/temp_uploads:/app/app/temp_uploads
+      - ./.env:/app/.env
+    environment:
+      - PORT=8501
+      - PYTHONPATH=/app
+    restart: unless-stopped
