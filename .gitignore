@@ -3,3 +3,4 @@ venv
 app/temp_uploads
 app/chroma_langchain_db
 __pycache__
+data
