@@ -116,7 +116,7 @@ with st.sidebar:
     st.markdown("""
     1. **Upload** a `.txt` document
     2. **Wait** for processing to complete
-    3. **Ask** questions about te content
+    3. **Ask** questions about the content
     4. **Chat** and explore your document!
     
     ### ✨ Anything else?
