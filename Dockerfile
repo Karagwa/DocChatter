@@ -29,6 +29,6 @@ COPY . .
 RUN mkdir -p /app/chroma_langchain_db /app/temp_uploads
 
 
-EXPOSE $PORT
+EXPOSE 8501
 # Removed the square brackets around the port variable to ensure it is correctly interpreted on deployment
 CMD streamlit run app/main.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true
