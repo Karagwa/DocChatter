@@ -5,7 +5,7 @@ services:
     build: .
     container_name: docchatter
     ports:
-      - "8501:8501"
+      - "8501:8501"       # Streamlit frontend port
     environment:
       PORT: 8501
       PYTHONPATH: /app
