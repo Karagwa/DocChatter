@@ -1,13 +1,12 @@
+version: "3.8"
+
 services:
   docchatter:
     build: .
+    container_name: docchatter
     ports:
-      - "8081:8501"
-    volumes:
-      - ./chroma_langchain_db:/app/chroma_langchain_db
-      - ./app/temp_uploads:/app/app/temp_uploads
-      - ./.env:/app/.env
+      - "8501:8501"
     environment:
-      - PORT=8501
-      - PYTHONPATH=/app
+      PORT: 8501
+      PYTHONPATH: /app
     restart: unless-stopped
